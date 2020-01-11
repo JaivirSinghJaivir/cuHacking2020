@@ -1,8 +1,7 @@
 import pygame
 pygame.init()
 
-win = pygame.display.set_mode((759,761))
-pygame.display.set_caption("First Game")
+win = pygame.display.set_mode((800,600))
 fr = pygame.image.load("floor_rotated.png")
 
 x = 50
