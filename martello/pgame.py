@@ -94,6 +94,8 @@ def char_selection():
         button('James', 550, 400, 100, 50, (170, 170, 0), (255, 255, 0), 'sel')
         button('Harrison', 650, 400, 100, 50, (170, 170, 0), (255, 255, 0), 'sel')
 
+        button('Done', 850, 450, 100, 50, (170, 170, 0), (255, 255, 0), 'start')
+
         pygame.display.update()
         clock.tick(15)
 
