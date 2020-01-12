@@ -112,18 +112,18 @@ class action:
 
 
     # Testing Code
-#win = pygame.display.set_mode((1000,600))
-#pygame.display.set_caption("Murder on the 2nd Floor")
+win = pygame.display.set_mode((1000,600))
+pygame.display.set_caption("Murder on the 2nd Floor")
 
 
-#movement = action()
-#movement.activity((255,0,255),45,45,100,100,"new client",win)
-#movement.activity((255,255,0),345,45,300,150,"off hook",win)
-#movement.activity((255,0,0),645,45,750,200,"motion detected",win)
-#movement.activity((255,255,255),800,30,850,90,"successful keycard unlock",win)
-#movement.activity((0,255,0),45,200,145,300,"unlocked no keycard",win)
-#movement.activity((0,255,255),200,245,250,300,"door closed",win)
-#movement.activity((255,255,255),300,350,350,300,"user connected",win)
-#pygame.display.update()
-#pygame.time.delay(20000)
+movement = action()
+movement.activity((255,0,255),45,45,100,100,"new client",win)
+movement.activity((255,255,0),345,45,300,150,"off hook",win)
+movement.activity((255,0,0),645,45,750,200,"motion detected",win)
+movement.activity((255,255,255),800,30,850,90,"successful keycard unlock",win)
+movement.activity((0,255,0),45,200,145,300,"unlocked no keycard",win)
+movement.activity((0,255,255),200,245,250,300,"door closed",win)
+movement.activity((255,255,255),300,350,350,300,"user connected",win)
+pygame.display.update()
+pygame.time.delay(20000)
 

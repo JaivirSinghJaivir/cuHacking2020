@@ -9,12 +9,12 @@ pygame.display.set_caption("Murder on the 2nd Floor")
 fr = pygame.image.load("floor_rotated2.png")
 fr = pygame.transform.scale(fr, (1080, 600))
 clock = pygame.time.Clock()
-selected_names = []
+names = []
 
 # def create_event_list(d: dict):
 
-def get_selected_names():
-    return selected_names()
+def get_names():
+    return names()
 
 def create_event_by_person(guest_id: str, d: dict) -> list:
     person_list = []
