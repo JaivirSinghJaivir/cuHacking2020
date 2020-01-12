@@ -1,56 +1,56 @@
 [
     {
-      "device-id": 220,
+      "device-id": "220",
       "x": 100,
       "y": 75
     },
     {
-      "device-id": 232,
+      "device-id": "232",
       "x": 75,
       "y": 155
     },
     {
-      "device-id": 210,
+      "device-id": "210",
       "x": 265,
       "y": 75
     },
     {
-      "device-id": 231,
+      "device-id": "231",
       "x": 295,
       "y": 150
     },
     {
-      "device-id": 233,
+      "device-id": "233",
       "x": 295,
       "y": 230
     },
     {
-      "device-id": 235,
+      "device-id": "235",
       "x": 295,
       "y": 310
     },
     {
-      "device-id": 241,
+      "device-id": "241",
       "x": 280,
       "y": 385
     },
     {
-      "device-id": 247,
+      "device-id": "247",
       "x": 285,
       "y": 465
     },
     {
-      "device-id": 248,
+      "device-id": "248",
       "x": 90,
       "y": 465
     },
     {
-      "device-id": 244,
+      "device-id": "244",
       "x": 90,
       "y": 390
     },
     {
-      "device-id": 236,
+      "device-id": "236",
       "x": 75,
       "y": 315
     },
@@ -90,27 +90,27 @@
       "y": 470
     },
     {
-      "device-id": 156,
+      "device-id": "156",
       "x": 465,
       "y": 470
     },
     {
-      "device-id": 150,
+      "device-id": "150",
       "x": 530,
       "y": 500
     },
     {
-      "device-id": 155,
+      "device-id": "155",
       "x": 625,
       "y": 455
     },
     {
-      "device-id": 151,
+      "device-id": "151",
       "x": 615,
       "y": 365
     },
     {
-      "device-id": 101,
+      "device-id": "101",
       "x": 680,
       "y": 365
     },
@@ -125,7 +125,7 @@
       "y": 235
     },
     {
-      "device-id": 105,
+      "device-id": "105",
       "x": 460,
       "y": 235
     },
@@ -145,13 +145,34 @@
       "y": 90
     },
     {
-      "device-id": 110,
+      "device-id": "110",
       "x": 585,
       "y": 90
     },
     {
-      "device-id": 130,
+      "device-id": "130",
       "x": 430,
       "y": 90
+    },
+    {
+      "device-id": "154",
+      "x": 430,
+      "y": 410
+    },
+    {
+      "device-id": "152",
+      "x": 430,
+      "y": 350
+    },
+    {
+      "device-id": "250",
+      "x": 185,
+      "y": 500
+    },
+    {
+      "device-id": "200",
+      "x": 185,
+      "y": 365
     }
+
   ]
