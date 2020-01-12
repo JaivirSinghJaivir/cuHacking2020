@@ -9,6 +9,7 @@ pygame.display.set_caption("Murder on the 2nd Floor")
 fr = pygame.image.load("floor_rotated2.png")
 fr = pygame.transform.scale(fr, (1080, 600))
 clock = pygame.time.Clock()
+selected_names = []
 
 # def create_event_list(d: dict):
 
@@ -49,7 +50,10 @@ def button(msg, x, y, w, h, ic, ac, action=None):
                 elif action == 'cs':
                     char_selection()
                 elif action == 'sel':
-                    button('msg', 150, 250, 100, 50, (255, 255, 0), (255, 255, 0), 'sel')
+                    selected_names.append(msg) if msg not in selected_names else selected_names.remove(msg)
+                    print(selected_names)
+                    # pygame.draw.rect(win, ac, (x, y, w, h))
+                    # pygame.display.update()
     else:
         pygame.draw.rect(win, ic, (x, y, w, h))
     mssg(msg, pygame.font.Font("freesansbold.ttf", 20), x+(w/2), y+(h/2))
