@@ -4,16 +4,16 @@ import csv
 
 pygame.init()
 
-private win = pygame.display.set_mode((1080, 600))
+win = pygame.display.set_mode((1080, 600))
 pygame.display.set_caption("Murder on the 2nd Floor")
-private fr = pygame.image.load("floor_rotated2.png")
+fr = pygame.image.load("floor_rotated2.png")
 fr = pygame.transform.scale(fr, (1080, 600))
-private clock = pygame.time.Clock()
-private selected_names = []
+clock = pygame.time.Clock()
+selected_names = []
 
 # def create_event_list(d: dict):
 
-def public get_selected_names():
+def get_selected_names():
     return selected_names()
 
 def create_event_by_person(guest_id: str, d: dict) -> list:
@@ -53,19 +53,12 @@ def button(msg, x, y, w, h, ic, ac, action=None):
                 elif action == 'cs':
                     char_selection()
                 elif action == 'sel':
-<<<<<<< HEAD
                     print("hello")
                     pygame.draw.rect(win, ac, (x, y, w, h))
-                    # button('msg', x, y, w, h, (255, 255, 0), (255, 255, 0), 'sel')
-=======
                     selected_names.append(msg) if msg not in selected_names else selected_names.remove(msg)
-<<<<<<< HEAD
-=======
-                    print(selected_names)
-                    # pygame.draw.rect(win, ac, (x, y, w, h))
-                    # pygame.display.update()
->>>>>>> 265275104c9f0352684837e4978924152ac492de
->>>>>>> 0c86cb1f87f674421314e5b31d7e653a108a33d1
+                elif action == 'back':
+                    char_selection()
+                    pygame.quit()
     else:
         pygame.draw.rect(win, ic, (x, y, w, h))
     mssg(msg, pygame.font.Font("freesansbold.ttf", 20), x+(w/2), y+(h/2))
@@ -88,6 +81,7 @@ def intro():
         clock.tick(15)
 
 def char_selection():
+    selected_names = []
     cs = True
     while cs:
         for event in pygame.event.get():
@@ -156,7 +150,9 @@ def core():
                 else:
                     p_position += 1
 
-        pygame.draw.rect(win, (255, 0, 0), (x, y, width, height)) 
+        pygame.draw.rect(win, (255, 0, 0), (x, y, width, height))
+
+        button('Back', 875, 500, 100, 50, (170, 170, 0), (255, 255, 0), 'back')
         pygame.display.update()
 
 
