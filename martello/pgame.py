@@ -32,7 +32,6 @@ def location_list(people: list, dataset: dict) -> list:
     mega_list = []
     for person in people:
         mega_list.append(create_event_by_person(person, dataset))
-    print(mega_list)
     return mega_list
 
 def mssg(m, ft, x, y):
@@ -60,21 +59,16 @@ def button(msg, x, y, w, h, ic, ac, action=None):
                 elif action == 'cs':
                     char_selection()
                 elif action == 'sel':
-                    print("hello")
                     pygame.draw.rect(win, ac, (x, y, w, h))
-<<<<<<< HEAD
                     selected_names.append(msg) if msg not in selected_names else selected_names.remove(msg)
                 elif action == 'back':
                     char_selection()
                     pygame.quit()
-=======
                     # button('msg', x, y, w, h, (255, 255, 0), (255, 255, 0), 'sel')
 
                     selected_names.append(msg) if msg not in selected_names else selected_names.remove(msg)
-                    print(selected_names)
                     # pygame.draw.rect(win, ac, (x, y, w, h))
                     # pygame.display.update()
->>>>>>> bd7e9769166bec18e53677120a35959f09fca4b1
     else:
         pygame.draw.rect(win, ic, (x, y, w, h))
     mssg(msg, pygame.font.Font("freesansbold.ttf", 20), x+(w/2), y+(h/2))
@@ -137,12 +131,13 @@ def core():
     val = 5
     run = True
 
-    p_list = create_event_by_person("Jason", dataset)
     p_position = 0
+    l_position = 0
 
-    # act = action(win,)
+    p_list = location_list(["Eugene", "Veronica"], dataset)
 
-    location_list(["Eugene"], dataset)
+    flag = True
+    color = (255, 0, 0)
 
     while run:
         win.fill((0, 0, 0))
@@ -156,20 +151,27 @@ def core():
         pygame.display.update()
         clock.tick(60)
 
-        for location in location_data:
-            if (location["device-id"] == p_list[p_position]["device-id"]):
-                if (x < location["x"]):
-                    x += val
-                elif (x > location["x"]):
-                    x -= val
-                elif (y < location["y"]):
-                    y += val
-                elif (y > location["y"]):
-                    y -= val
-                else:
-                    p_position += 1
+        if flag == True:
+            for location in location_data:
+                
+                if (location["device-id"] == p_list[p_position][l_position]["device-id"]):
+                    x = location["x"]
+                    y = location["y"]
+                    l_position += 1
+                    break
+                    # pygame.time.delay(100)
 
-        pygame.draw.rect(win, (255, 0, 0), (x, y, width, height))
+            #next person
+            if l_position >= len(p_list[p_position]):
+                p_position += 1
+                l_position = 0
+                #code here the new color
+                color = (255, 255, 0)
+            #no more people
+            if p_position == len(p_list): 
+                flag = False
+
+        pygame.draw.rect(win, color, (x, y, width, height))
 
         button('Back', 875, 500, 100, 50, (170, 170, 0), (255, 255, 0), 'back')
         pygame.display.update()
