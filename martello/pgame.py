@@ -53,7 +53,19 @@ def button(msg, x, y, w, h, ic, ac, action=None):
                 elif action == 'cs':
                     char_selection()
                 elif action == 'sel':
+<<<<<<< HEAD
+                    print("hello")
+                    pygame.draw.rect(win, ac, (x, y, w, h))
+                    # button('msg', x, y, w, h, (255, 255, 0), (255, 255, 0), 'sel')
+=======
                     selected_names.append(msg) if msg not in selected_names else selected_names.remove(msg)
+<<<<<<< HEAD
+=======
+                    print(selected_names)
+                    # pygame.draw.rect(win, ac, (x, y, w, h))
+                    # pygame.display.update()
+>>>>>>> 265275104c9f0352684837e4978924152ac492de
+>>>>>>> 0c86cb1f87f674421314e5b31d7e653a108a33d1
     else:
         pygame.draw.rect(win, ic, (x, y, w, h))
     mssg(msg, pygame.font.Font("freesansbold.ttf", 20), x+(w/2), y+(h/2))
@@ -105,18 +117,18 @@ def char_selection():
 
 
 def core():
-    x = 50
-    y = 50
+    dataset = load_data("dataset.json")
+    location_data = load_data("location_data.json")
+
+    x = location_data[0]["x"]
+    y = location_data[0]["y"]
     width = 20
     height = 20
     val = 5
     run = True
 
-    dataset = load_data("dataset.json")
-    location_data = load_data("location_data.json")
-
     p_list = create_event_by_person("Jason", dataset)
-    print(p_list)
+    # print(p_list)
     p_position = 0
 
     while run:
