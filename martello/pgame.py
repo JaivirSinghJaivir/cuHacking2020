@@ -62,6 +62,7 @@ def button(msg, x, y, w, h, ic, ac, action=None):
                     pygame.draw.rect(win, ac, (x, y, w, h))
                     selected_names.append(msg) if msg not in selected_names else selected_names.remove(msg)
                 elif action == 'back':
+<<<<<<< HEAD
                     char_selection()
                     pygame.quit()
                     # button('msg', x, y, w, h, (255, 255, 0), (255, 255, 0), 'sel')
@@ -69,6 +70,9 @@ def button(msg, x, y, w, h, ic, ac, action=None):
                     selected_names.append(msg) if msg not in selected_names else selected_names.remove(msg)
                     # pygame.draw.rect(win, ac, (x, y, w, h))
                     # pygame.display.update()
+=======
+                    intro()
+>>>>>>> d7de36cdafbd48ef2af6c84ef3dff58058f3edb9
     else:
         pygame.draw.rect(win, ic, (x, y, w, h))
     mssg(msg, pygame.font.Font("freesansbold.ttf", 20), x+(w/2), y+(h/2))
