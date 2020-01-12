@@ -24,25 +24,35 @@ def load_data(filename: str) -> dict:
         d = json.load(f)
     return d
 
+def mssg(m, ft, x, y):
+    TextSurf, TextRect = text_objects(m, ft)
+    TextRect.center = (x, y)
+    win.blit(TextSurf, TextRect)
+
 def text_objects(text, font):
     ts = font.render(text, True, (0, 0, 0))
     return ts, ts.get_rect()
 
-def button(msg, x, y, w, h, ic, ac):
+def button(msg, x, y, w, h, ic, ac, action=None):
     mouse = pygame.mouse.get_pos()
     click = pygame.mouse.get_pressed()
 
     if x+w > mouse[0] > x and y+h > mouse[1] > y:
         pygame.draw.rect(win, ac, (x, y, w, h))
         if click[0] == 1:
-            core()
+            if action != None:
+                if action == 'start':
+                    core()
+                elif action == 'quit':
+                    pygame.quit()
+                    quit()
+                elif action == 'cs':
+                    char_selection()
+                elif action == 'sel':
+                    button('msg', 150, 250, 100, 50, (255, 255, 0), (255, 255, 0), 'sel')
     else:
         pygame.draw.rect(win, ic, (x, y, w, h))
-
-    smallText = pygame.font.Font("freesansbold.ttf", 20)
-    textSurf, textRect = text_objects(msg, smallText)
-    textRect.center = ((x+(w/2)), (y+(h/2)))
-    win.blit(textSurf, textRect)
+    mssg(msg, pygame.font.Font("freesansbold.ttf", 20), x+(w/2), y+(h/2))
 
 
 def intro():
@@ -51,15 +61,38 @@ def intro():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
-
+                quit()
         win.fill((255, 255, 255))
-        lt = pygame.font.Font('FreeSansBold.ttf', 55)
-        TextSurf, TextRect = text_objects("Murder on the 2nd Floor", lt)
-        TextRect.center = (400, 300)
-        win.blit(TextSurf, TextRect)
+        mssg('Murder on the 2nd Floor', pygame.font.Font('FreeSansBold.ttf', 75), 540, 200)
 
-        button('Start', 150, 450, 100, 50, (0, 200, 0), (0, 255, 0))
-        button('Quit', 550, 450, 100, 50, (200, 0, 0), (255, 0, 0))
+        button('Start', 150, 450, 100, 50, (0, 200, 0), (0, 255, 0), 'cs')
+        button('Quit', 830, 450, 100, 50, (200, 0, 0), (255, 0, 0), 'quit')
+
+        pygame.display.update()
+        clock.tick(15)
+
+def char_selection():
+    cs = True
+    while cs:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
+        win.fill((255, 255, 255))
+        mssg('Select one or more people to follow', pygame.font.Font("freesansbold.ttf", 30), 540, 50)
+
+        button('Veronica', 150, 250, 100, 50, (170, 170, 0), (255, 255, 0), 'sel')
+        button('Jason', 250, 250, 100, 50, (170, 170, 0), (255, 255, 0), 'sel')
+        button('Thomas', 350, 250, 100, 50, (170, 170, 0), (255, 255, 0), 'sel')
+        button('Eugene', 450, 250, 100, 50, (170, 170, 0), (255, 255, 0), 'sel')
+        button('Salina', 550, 250, 100, 50, (170, 170, 0), (255, 255, 0), 'sel')
+        button('Rob', 650, 250, 100, 50, (170, 170, 0), (255, 255, 0), 'sel')
+        button('Kristina', 150, 400, 100, 50, (170, 170, 0), (255, 255, 0), 'sel')
+        button('Alok', 250, 400, 100, 50, (170, 170, 0), (255, 255, 0), 'sel')
+        button('Marc-Andre', 350, 400, 100, 50, (170, 170, 0), (255, 255, 0), 'sel')
+        button('Dave', 450, 400, 100, 50, (170, 170, 0), (255, 255, 0), 'sel')
+        button('James', 550, 400, 100, 50, (170, 170, 0), (255, 255, 0), 'sel')
+        button('Harrison', 650, 400, 100, 50, (170, 170, 0), (255, 255, 0), 'sel')
 
         pygame.display.update()
         clock.tick(15)
@@ -104,15 +137,12 @@ def core():
                     y -= val
                 else:
                     p_position += 1
-            # print(location["device-id"])
-            # print(eugene_list[eugene_position]["device-id"])
-            # print("ff")
 
         pygame.draw.rect(win, (255, 0, 0), (x, y, width, height)) 
-        pygame.display.update() 	
+        pygame.display.update()
 
 
 intro()
 core()
-
 pygame.quit()
+quit()
