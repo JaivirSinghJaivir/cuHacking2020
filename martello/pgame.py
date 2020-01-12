@@ -7,6 +7,7 @@ pygame.init()
 win = pygame.display.set_mode((1080, 600))
 pygame.display.set_caption("Murder on the 2nd Floor")
 fr = pygame.image.load("floor_rotated2.png")
+fr = pygame.transform.scale(fr, (1080, 600))
 clock = pygame.time.Clock()
 
 # def create_event_list(d: dict):
@@ -50,6 +51,7 @@ def intro():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
+
         win.fill((255, 255, 255))
         lt = pygame.font.Font('FreeSansBold.ttf', 55)
         TextSurf, TextRect = text_objects("Murder on the 2nd Floor", lt)
@@ -68,13 +70,14 @@ def core():
     y = 50
     width = 20
     height = 20
-    vel = 5
+    val = 5
     run = True
 
     dataset = load_data("dataset.json")
     location_data = load_data("location_data.json")
 
-    p_list = create_event_by_person("Eugene", dataset)
+    p_list = create_event_by_person("Jason", dataset)
+    print(p_list)
     p_position = 0
 
     while run:
@@ -82,31 +85,31 @@ def core():
         win.blit(fr, (0, 0))
         pygame.time.delay(100)
 
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            run = False 
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                run = False 
 
-    pygame.display.update()
-    clock.tick(60)
+        pygame.display.update()
+        clock.tick(60)
 
-    for location in location_data:
-        if (location["device-id"] == p_list[p_position]["device-id"]):
-            if (x < location["x"]):
-                x += val
-            elif (x > location["x"]):
-                x -= val
-            elif (y < location["y"]):
-                y += val
-            elif (y > location["y"]):
-                y -= val
-            else:
-                p_position += 1
-        # print(location["device-id"])
-        # print(eugene_list[eugene_position]["device-id"])
-        # print("ff")
+        for location in location_data:
+            if (location["device-id"] == p_list[p_position]["device-id"]):
+                if (x < location["x"]):
+                    x += val
+                elif (x > location["x"]):
+                    x -= val
+                elif (y < location["y"]):
+                    y += val
+                elif (y > location["y"]):
+                    y -= val
+                else:
+                    p_position += 1
+            # print(location["device-id"])
+            # print(eugene_list[eugene_position]["device-id"])
+            # print("ff")
 
-    pygame.draw.rect(win, (255, 0, 0), (x, y, width, height)) 
-    pygame.display.update() 	
+        pygame.draw.rect(win, (255, 0, 0), (x, y, width, height)) 
+        pygame.display.update() 	
 
 
 intro()
