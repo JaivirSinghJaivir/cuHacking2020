@@ -4,14 +4,17 @@ import csv
 
 pygame.init()
 
-win = pygame.display.set_mode((1080, 600))
+private win = pygame.display.set_mode((1080, 600))
 pygame.display.set_caption("Murder on the 2nd Floor")
-fr = pygame.image.load("floor_rotated2.png")
+private fr = pygame.image.load("floor_rotated2.png")
 fr = pygame.transform.scale(fr, (1080, 600))
-clock = pygame.time.Clock()
-selected_names = []
+private clock = pygame.time.Clock()
+private selected_names = []
 
 # def create_event_list(d: dict):
+
+def public get_selected_names():
+    return selected_names()
 
 def create_event_by_person(guest_id: str, d: dict) -> list:
     person_list = []
@@ -60,6 +63,11 @@ def button(msg, x, y, w, h, ic, ac, action=None):
                     print("hello")
                     pygame.draw.rect(win, ac, (x, y, w, h))
                     # button('msg', x, y, w, h, (255, 255, 0), (255, 255, 0), 'sel')
+
+                    selected_names.append(msg) if msg not in selected_names else selected_names.remove(msg)
+                    print(selected_names)
+                    # pygame.draw.rect(win, ac, (x, y, w, h))
+                    # pygame.display.update()
     else:
         pygame.draw.rect(win, ic, (x, y, w, h))
     mssg(msg, pygame.font.Font("freesansbold.ttf", 20), x+(w/2), y+(h/2))
@@ -91,20 +99,20 @@ def char_selection():
         win.fill((255, 255, 255))
         mssg('Select one or more people to follow', pygame.font.Font("freesansbold.ttf", 30), 540, 50)
 
-        button('Veronica', 150, 250, 100, 50, (170, 170, 0), (255, 255, 0), 'sel')
+        button('Veronica', 100, 250, 100, 50, (170, 170, 0), (255, 255, 0), 'sel')
         button('Jason', 250, 250, 100, 50, (170, 170, 0), (255, 255, 0), 'sel')
-        button('Thomas', 350, 250, 100, 50, (170, 170, 0), (255, 255, 0), 'sel')
-        button('Eugene', 450, 250, 100, 50, (170, 170, 0), (255, 255, 0), 'sel')
-        button('Salina', 550, 250, 100, 50, (170, 170, 0), (255, 255, 0), 'sel')
-        button('Rob', 650, 250, 100, 50, (170, 170, 0), (255, 255, 0), 'sel')
-        button('Kristina', 150, 400, 100, 50, (170, 170, 0), (255, 255, 0), 'sel')
+        button('Thomas', 400, 250, 100, 50, (170, 170, 0), (255, 255, 0), 'sel')
+        button('Eugene', 550, 250, 100, 50, (170, 170, 0), (255, 255, 0), 'sel')
+        button('Salina', 700, 250, 100, 50, (170, 170, 0), (255, 255, 0), 'sel')
+        button('Rob', 850, 250, 100, 50, (170, 170, 0), (255, 255, 0), 'sel')
+        button('Kristina', 100, 400, 100, 50, (170, 170, 0), (255, 255, 0), 'sel')
         button('Alok', 250, 400, 100, 50, (170, 170, 0), (255, 255, 0), 'sel')
-        button('Marc-Andre', 350, 400, 100, 50, (170, 170, 0), (255, 255, 0), 'sel')
-        button('Dave', 450, 400, 100, 50, (170, 170, 0), (255, 255, 0), 'sel')
-        button('James', 550, 400, 100, 50, (170, 170, 0), (255, 255, 0), 'sel')
-        button('Harrison', 650, 400, 100, 50, (170, 170, 0), (255, 255, 0), 'sel')
+        button('Marc-Andre', 400, 400, 100, 50, (170, 170, 0), (255, 255, 0), 'sel')
+        button('Dave', 550, 400, 100, 50, (170, 170, 0), (255, 255, 0), 'sel')
+        button('James', 700, 400, 100, 50, (170, 170, 0), (255, 255, 0), 'sel')
+        button('Harrison', 850, 400, 100, 50, (170, 170, 0), (255, 255, 0), 'sel')
 
-        button('Done', 850, 450, 100, 50, (170, 170, 0), (255, 255, 0), 'start')
+        button('Done', 875, 500, 100, 50, (170, 170, 0), (255, 255, 0), 'start')
 
         pygame.display.update()
         clock.tick(15)
