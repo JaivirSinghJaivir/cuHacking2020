@@ -28,6 +28,13 @@ def load_data(filename: str) -> dict:
         d = json.load(f)
     return d
 
+def location_list(people: list, dataset: dict) -> list:
+    mega_list = []
+    for person in people:
+        mega_list.append(create_event_by_person(person, dataset))
+    print(mega_list)
+    return mega_list
+
 def mssg(m, ft, x, y):
     TextSurf, TextRect = text_objects(m, ft)
     TextRect.center = (x, y)
@@ -55,10 +62,19 @@ def button(msg, x, y, w, h, ic, ac, action=None):
                 elif action == 'sel':
                     print("hello")
                     pygame.draw.rect(win, ac, (x, y, w, h))
+<<<<<<< HEAD
                     selected_names.append(msg) if msg not in selected_names else selected_names.remove(msg)
                 elif action == 'back':
                     char_selection()
                     pygame.quit()
+=======
+                    # button('msg', x, y, w, h, (255, 255, 0), (255, 255, 0), 'sel')
+
+                    selected_names.append(msg) if msg not in selected_names else selected_names.remove(msg)
+                    print(selected_names)
+                    # pygame.draw.rect(win, ac, (x, y, w, h))
+                    # pygame.display.update()
+>>>>>>> bd7e9769166bec18e53677120a35959f09fca4b1
     else:
         pygame.draw.rect(win, ic, (x, y, w, h))
     mssg(msg, pygame.font.Font("freesansbold.ttf", 20), x+(w/2), y+(h/2))
@@ -122,8 +138,11 @@ def core():
     run = True
 
     p_list = create_event_by_person("Jason", dataset)
-    # print(p_list)
     p_position = 0
+
+    # act = action(win,)
+
+    location_list(["Eugene"], dataset)
 
     while run:
         win.fill((0, 0, 0))
